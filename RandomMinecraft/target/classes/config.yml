@@ -1,0 +1,20 @@
+# Things to enable / disable
+random-drops: false
+random-crafting-recipes: false
+random-tp: false
+random-potion-effects: false
+random-arrow-shooting: false
+random-block-amounts: false
+random-eggs: false
+
+# Should Illegal Items be obtainable from Random Drops?
+illegal-random-drops: false
+
+# Should the Random TP happen at a random time? (Random TP will happen between 30 seconds to 2 minutes)
+random-tp-time: true
+
+# If the TP does not happen at a random time, what should the interval be? (in seconds)
+random-tp-interval: 45
+
+# Should the output recipe for random crafting recipes contain illegal blocks?
+illegal-crafting-output: false

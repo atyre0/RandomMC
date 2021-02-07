@@ -1,0 +1,7 @@
+name: RandomMC
+version: 1.0
+author: atyre
+main: me.atyre.randommc.RandomMC
+commands:
+  random:
+    description: Base command
