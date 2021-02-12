@@ -5,17 +5,16 @@ import me.atyre.randommc.RandomUtil;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.inventory.PrepareItemCraftEvent;
+import org.bukkit.event.inventory.FurnaceSmeltEvent;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
 
-public class RandomCraftingRecipes implements Listener {
-
+public class RandomSmelting implements Listener {
     @EventHandler
-    public void onCraft(PrepareItemCraftEvent event) {
-        if (RandomMC.getInstance().getConfig().getBoolean("random-crafting-recipes") == true) {
-            Material itemResult = event.getRecipe().getResult().getType();
+    public void onFurnace(FurnaceSmeltEvent event) {
+        if (RandomMC.getInstance().getConfig().getBoolean("random-smelting") == true) {
+            Material smeltedResult = event.getResult().getType();
             ArrayList<Material> materials = new ArrayList<Material>();
 
             for (Material material : Material.values()) {
@@ -29,8 +28,8 @@ public class RandomCraftingRecipes implements Listener {
                 materials.remove(Material.AIR);
             }
 
-            if (materials.contains(itemResult)) {
-                event.getInventory().setResult(new ItemStack(RandomUtil.getRandomItem()));
+            if (materials.contains(smeltedResult)) {
+                event.setResult(new ItemStack(RandomUtil.getRandomItem()));
             }
         }
     }

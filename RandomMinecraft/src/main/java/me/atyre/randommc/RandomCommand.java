@@ -1,6 +1,5 @@
 package me.atyre.randommc;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -19,7 +18,7 @@ public class RandomCommand implements CommandExecutor {
             if (args.length == 0) {
                 String[] usageMsg = {
                         "§9§m-----------------------------------------------------",
-                        "§bRandom MC v1.0 by atyre",
+                        "§bRandom MC v1.0 by atyre / Tyler",
                         " ",
                         "§bUse §9/random reload §bto reload the configuration after making changes.",
                         "§9§m-----------------------------------------------------"

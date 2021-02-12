@@ -1,8 +1,6 @@
 package me.atyre.randommc;
 
-import me.atyre.randommc.challenges.RandomBlockAmounts;
-import me.atyre.randommc.challenges.RandomDrops;
-import me.atyre.randommc.challenges.RandomEggs;
+import me.atyre.randommc.challenges.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -15,16 +13,17 @@ public class RandomMC extends JavaPlugin {
         instance = this;
 
         loadConfig();
-
         getCommand("random").setExecutor(new RandomCommand());
-        Bukkit.getServer().getPluginManager().registerEvents(new RandomDrops(), this);
-        Bukkit.getServer().getPluginManager().registerEvents(new RandomBlockAmounts(), this);
-        Bukkit.getServer().getPluginManager().registerEvents(new RandomEggs(), this);
+        registerChallenges();
+
+        System.out.println("[RandomMC] Plugin is now enabled.");
     }
 
     @Override
     public void onDisable() {
         instance = null;
+
+        System.out.println("[RandomMC] Plugin is now disabled.");
 
     }
 
@@ -35,5 +34,15 @@ public class RandomMC extends JavaPlugin {
     public void loadConfig() {
         getConfig().options().copyDefaults(true);
         saveConfig();
+    }
+
+    public void registerChallenges() {
+        Bukkit.getServer().getPluginManager().registerEvents(new RandomItems(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new RandomBlockAmounts(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new RandomEggs(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new RandomCraftingRecipes(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new RandomMobDrops(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new RandomItemNames(), this);
+        Bukkit.getServer().getPluginManager().registerEvents(new RandomSmelting(), this);
     }
 }

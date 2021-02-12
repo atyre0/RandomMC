@@ -6,6 +6,9 @@ random-potion-effects: false
 random-arrow-shooting: false
 random-block-amounts: false
 random-eggs: false
+random-item-names: false
+random-mob-drops: false
+random-smelting: false
 
 # Should Illegal Items be obtainable from Random Drops?
 illegal-random-drops: false

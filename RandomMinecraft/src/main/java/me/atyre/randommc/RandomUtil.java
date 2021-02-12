@@ -2,6 +2,7 @@ package me.atyre.randommc;
 
 import org.bukkit.Material;
 import org.bukkit.entity.EntityType;
+import org.bukkit.inventory.Recipe;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -45,11 +46,14 @@ public class RandomUtil {
         return randomEntity;
     }
 
-    public static EntityType getRandomProjectile() {
-        ArrayList<EntityType> projectiles = new ArrayList<EntityType>();
+    // Still a work in progress
 
-        for (EntityType entity : EntityType.values()) {
-            if (entity.isP)
+    public static ProjectileType getRandomProjectile() {
+        ArrayList<ProjectileType> projectiles = new ArrayList<ProjectileType>();
+
+        for (ProjectileType projectile : ProjectileType.values()) {
+            projectiles.add(projectile);
+            projectiles.remove(ProjectileType.FISH);
         }
 
         Random random = new Random();
@@ -57,6 +61,27 @@ public class RandomUtil {
         ProjectileType randomProjectile = projectiles.get(random.nextInt(projectiles.size()));
 
         return randomProjectile;
+    }
+
+    public static String getRandomItemName() {
+        ArrayList<Material> materials = new ArrayList<Material>();
+
+        for (Material material : Material.values()) {
+            materials.add(material);
+
+            if (RandomMC.getInstance().getConfig().getBoolean("illegal-random-item-names") == false) {
+                materials.remove(Material.BEDROCK);
+                materials.remove(Material.BARRIER);
+            }
+
+            materials.remove(Material.AIR);
+        }
+
+        Random random = new Random();
+
+        Material randomMaterial = materials.get(random.nextInt(materials.size()));
+
+        return randomMaterial.name();
     }
 
     public static int generateRandomNumber(int n1, int n2) {
